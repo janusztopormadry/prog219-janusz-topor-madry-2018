@@ -28,15 +28,20 @@ play = function() {
 			else {
 				player3.purse--;
 				$('#status').text(player3.name + ' LOST');
+				if(player3.purse===0){
+					player3.isLooser = true;
+					loosers++;
+					$('#status').text(player3.name + ' LOST ALL');
+				}
 			}
 		}
 		else{
-			if(!player1.isLooser)
+			if(!player3.isLooser)
 				{
 					loosers++;
 					player3.isLooser = true;
 				}
-			this.play();
+			play();
 		}
     } 
 	else if (clicks % 3 ===2) {
@@ -49,6 +54,12 @@ play = function() {
 			} else {
 				player2.purse--;
 				$('#status').text(player2.name + ' LOST');
+				if(player2.purse===0){
+					player2.isLooser = true;
+					loosers++;					
+					$('#status').text(player2.name + ' LOST ALL');
+
+				}
 			}
 		}
 		else{
@@ -57,7 +68,7 @@ play = function() {
 					loosers++;
 					player2.isLooser = true;
 				}
-				this.play();
+				play();
 		}
     } 
 	else {
@@ -70,6 +81,12 @@ play = function() {
 			} else {
 				player1.purse--;
 				$('#status').text(player1.name + ' LOST');
+				if(player1.purse===0){
+					player1.isLooser = true;
+					loosers++;
+					$('#status').text(player1.name + ' LOST ALL');
+
+				}
 			}
 		}
 		else{
@@ -78,7 +95,7 @@ play = function() {
 					loosers++;
 					player1.isLooser = true;
 				}
-				this.play();
+				play();
 		}
     }
 
