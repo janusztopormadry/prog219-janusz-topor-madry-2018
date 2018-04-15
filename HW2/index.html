@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dice Game on the Cloud</title>
+    <LINK REL=StyleSheet HREF="diceGameCSS.css" TYPE="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+</head>
+
+<body>
+    <h2> The JavaScript Dice Game</h2>
+    <p> You start with $5, each round you either win or lose $1.</p>
+    <img id="image1" src="./images/dice-1.jpg" alt="Dice Image" style="width:50px;height:50px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <img id="image2" src="./images/dice-6.jpg" alt="Dice Image" style="width:50px;height:50px;">
+    <br /><br />
+    <h3>Player1</h3>
+    <p>
+        Your balance is $<span class="balance">5</span><br />
+        Number of turns <span class="turnCount">0</span>
+    </p>
+    <h3>Player2</h3>
+    <p>
+        Your balance is $<span class="balance">5</span><br />
+        Number of turns <span class="turnCount">0</span>
+    </p>
+    <h3>Player3</h3>
+    <p>
+        Your balance is $<span class="balance">5</span><br />
+        Number of turns <span class="turnCount">0</span>
+    </p>
+    <br />
+    <p>
+        <span id="status"></span>
+    </p>
+    <button id="ButtonBet" type="button">Bet Now</button>  <br />    
+    <script src="gameflow.js"></script>
+    <script src="gamelogic.js"></script>  
+    <script src="startup.js"></script> 
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "prog219-hw2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gameflow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vampireqt/PROG219-HW1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vampireqt/PROG219-HW1/issues"
+  },
+  "homepage": "https://github.com/vampireqt/PROG219-HW1#readme",
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  }
+}
