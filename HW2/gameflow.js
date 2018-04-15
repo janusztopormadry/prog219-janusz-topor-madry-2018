@@ -110,6 +110,15 @@ play = function() {
     $('body > p:nth-of-type(4) > .balance').text(player3.purse);
     $('body > p:nth-of-type(4) > .turnCount').text(player3.totalRolls);
 	 if (loosers===2) {
+		 if(!player1.isLooser){
+			 currentPlayer = player1.name;
+		 }
+		 else if(!player2.isLooser){
+			 currentPlayer = player2.name;
+		 }
+		 else{
+			 currentPlayer = player3.name;
+		 }
 		$('#ButtonBet').attr('disabled', 'true');
         $('#status').text('GAME OVER! ' + currentPlayer +' is a WINNER!');
 	}
