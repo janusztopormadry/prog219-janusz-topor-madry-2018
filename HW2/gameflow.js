@@ -31,12 +31,12 @@ play = function() {
 			}
 		}
 		else{
-			if(!player3.isLooser)
+			if(!player1.isLooser)
 				{
 					loosers++;
 					player3.isLooser = true;
 				}
-			play();
+			this.play();
 		}
     } 
 	else if (clicks % 3 ===2) {
@@ -57,7 +57,7 @@ play = function() {
 					loosers++;
 					player2.isLooser = true;
 				}
-				play();
+				this.play();
 		}
     } 
 	else {
@@ -78,7 +78,7 @@ play = function() {
 					loosers++;
 					player1.isLooser = true;
 				}
-				play();
+				this.play();
 		}
     }
 
