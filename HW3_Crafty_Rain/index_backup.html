@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crafty Rain Game</title>
+        <script type="text/javascript" src="crafty-min.js"></script>
+        <script type="text/javascript" src="javascript.js"></script>
+        <style>
+            #game
+            {
+            border:solid 1px black;
+            border-radius:8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game"></div>
+        <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
+        <script>
+            var screenWidth = 800;
+            var screenHeight = 550;
+            var hitCounter = 0;
+            Crafty.init(screenWidth,screenHeight, document.getElementById('game'));
+
+            Crafty.e('Player, 2D, DOM, Color').attr({x: 0, y: 0, w: 100, h: 100});
+
+           /* var block = Crafty.e('Player, 2D, Canvas, Color, Solid, Twoway')
+                .attr({x: 100, y: 520, w: 20, h: 20})
+                .color('black')
+                .twoway(250);  */
+            
+            Crafty.e('Floor, 2D, DOM, Color').attr({x: 0, y: (screenHeight-10), w: screenWidth, h: 10}).color('lightblue');
+
+            var player1 = Crafty.e('Player, 2D, Canvas, Color, Solid, Twoway, Gravity, Collision')
+                .attr({x: 20, y: 530, w: 30, h: 30})
+                .color('#F00')
+                .twoway(160)
+                .gravity('Floor')
+                .gravityConst(1)
+                .bind("EnterFrame", function(){
+                if (this.x == screenWidth)
+                {
+                    pause();
+                    Crafty.e('2D, DOM, Text').attr({x:screenWidth/2, y:screenHeight/2}).text("Stage 1 Clear").textFont({size:'20px', weight:'bold'});
+                }
+            });
+
+            function drop(){
+                var random_x = Math.floor((Math.random() * (screenWidth+1000)));
+                Crafty.e('Drop, 2D, Canvas, Color, Solid, Gravity')
+                .attr({x: random_x, y: 0, w:2, h: 15})
+                .color('#000080')
+                .gravity()
+                .gravityConst(100)
+                .bind("EnterFrame", function() {
+                        if (this.y > screenHeight)
+                        this.destroy();
+                })
+                .bind("HitOn", function(){
+                    this.destroy();
+                    hitCounter++;
+                    if (hitCounter == 3)
+                    {
+                        player1.x = 20;
+                        hitCounter = 0;
+                    }
+                });
+            }
+            Crafty.bind("EnterFrame", function(){
+                drop();
+            });
+
+        </script>
+
+    </body>
+</html>
