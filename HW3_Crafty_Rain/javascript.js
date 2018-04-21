@@ -2,15 +2,18 @@ var screenWidth = 800;
 var screenHeight = 500;
 var hitCounter = 0;
 
-  Crafty.init(screenWidth,screenHeight, document.getElementById('game'));
+Crafty.init(screenWidth,screenHeight, document.getElementById('game'));
 
-  Crafty.e('Floor, 2D, Canvas, Solid, Color')
+Crafty.sprite("facio_sprite.png", {facio:[0,0,30,55]});
+Crafty.e('Floor, 2D, Canvas, Solid, Color, Collision')
     .attr({x: 0, y: 480, w: screenWidth * 2, h: 20})
     .color('lightblue');
+Crafty.e('ScreenSide, 2D, Canvas, Solid, Color, Collision')
+.attr({x: 0, y: 480, w: screenWidth * 2, h: 20})
+.color('lightblue');
 
-  var player1 = Crafty.e('Player, 2D, Canvas, Color, Solid, Twoway, Gravity, Collision')
-    .attr({x: 20, y: 460, w: 30, h: 20})
-    .color('#F00')
+  var player1 = Crafty.e('Player, 2D, Canvas, Solid, Twoway, Gravity, Collision, facio')
+    .attr({x: 20, y: 460, w: 30, h: 55})
     .twoway(150)
     .gravity('Floor')
     .bind("EnterFrame", function(){
@@ -36,9 +39,9 @@ weight: 'bold'
 function drop()
 {
 var randomx = Math.floor((Math.random() * screenWidth));
-Crafty.e('Drop, 2D, Canvas, Color, Solid, Gravity, Collision')
-    .attr({x: randomx, y: 0, w: 2, h: 10})
-    .color('#000080')
+Crafty.e('Drop, 2D, Canvas, Solid, Gravity, Collision, facio')
+    .attr({x: randomx, y: 0, w: 20, h: 15})
+    //.color('#aa33ff')
     .gravity()
     .checkHits('Player')
     .bind("HitOn", function(){
@@ -54,7 +57,7 @@ Crafty.e('Drop, 2D, Canvas, Color, Solid, Gravity, Collision')
         }
     })
     .bind("EnterFrame", function() {
-        if (this.y > screenHeight)
+        if (this.y > (screenHeight-50))
           this.destroy();
     });
 }
